@@ -21,6 +21,8 @@
 		F67F8A4326389A370007A0E0 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A4226389A370007A0E0 /* Events.swift */; };
 		F67F8A4726389DDE0007A0E0 /* NetworkServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A4626389DDE0007A0E0 /* NetworkServicing.swift */; };
 		F67F8A4B26389DFC0007A0E0 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A4A26389DFC0007A0E0 /* EventService.swift */; };
+		F67F8A552638A93A0007A0E0 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A542638A93A0007A0E0 /* DateFormatter.swift */; };
+		F67F8A582638AE6D0007A0E0 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A572638AE6D0007A0E0 /* ImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		F67F8A4226389A370007A0E0 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		F67F8A4626389DDE0007A0E0 /* NetworkServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicing.swift; sourceTree = "<group>"; };
 		F67F8A4A26389DFC0007A0E0 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		F67F8A542638A93A0007A0E0 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		F67F8A572638AE6D0007A0E0 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 				F67F8A20263893600007A0E0 /* Models */,
 				F67F8A21263893670007A0E0 /* Views */,
 				F67F8A222638936B0007A0E0 /* Controllers */,
+				F67F8A4E2638A6F40007A0E0 /* Helper */,
 				F67F8A1A263892EE0007A0E0 /* Resources */,
 			);
 			path = SeatGeekAPI;
@@ -167,8 +172,17 @@
 			children = (
 				F67F8A4626389DDE0007A0E0 /* NetworkServicing.swift */,
 				F67F8A4A26389DFC0007A0E0 /* EventService.swift */,
+				F67F8A572638AE6D0007A0E0 /* ImageService.swift */,
 			);
 			path = "Network Services";
+			sourceTree = "<group>";
+		};
+		F67F8A4E2638A6F40007A0E0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F67F8A542638A93A0007A0E0 /* DateFormatter.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +258,7 @@
 				F67F8A36263895A80007A0E0 /* EventTableViewCell.swift in Sources */,
 				F67F8A3B263895EF0007A0E0 /* EventListViewController.swift in Sources */,
 				F67F8A2B263894160007A0E0 /* Favorite+Convenience.swift in Sources */,
+				F67F8A552638A93A0007A0E0 /* DateFormatter.swift in Sources */,
 				F67F8A06263892D40007A0E0 /* AppDelegate.swift in Sources */,
 				F67F8A25263893AE0007A0E0 /* Favorite.xcdatamodeld in Sources */,
 				F67F8A08263892D40007A0E0 /* SceneDelegate.swift in Sources */,
@@ -252,6 +267,7 @@
 				F67F8A3F263896030007A0E0 /* EventDetailViewController.swift in Sources */,
 				F67F8A28263893EF0007A0E0 /* CoreDataStack.swift in Sources */,
 				F67F8A4726389DDE0007A0E0 /* NetworkServicing.swift in Sources */,
+				F67F8A582638AE6D0007A0E0 /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

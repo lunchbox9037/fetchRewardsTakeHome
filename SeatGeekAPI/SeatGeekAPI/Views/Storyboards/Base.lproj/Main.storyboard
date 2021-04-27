@@ -4,15 +4,14 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Event List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SeatGeekAPI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EventListViewController" customModule="SeatGeekAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,14 +24,14 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="143" id="7M0-Fy-WYz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="143" id="7M0-Fy-WYz" customClass="EventTableViewCell" customModule="SeatGeekAPI" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7M0-Fy-WYz" id="5xH-Gy-CCJ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="143"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="QIz-LH-smp">
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QIz-LH-smp">
                                                     <rect key="frame" x="12" y="12" width="390" height="119"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWa-IS-Qh8">
@@ -47,23 +46,23 @@
                                                                 <constraint firstAttribute="width" secondItem="h57-0u-gwP" secondAttribute="height" multiplier="1:1" id="s1o-Cd-7rc"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mNj-HD-f9W">
-                                                            <rect key="frame" x="165" y="0.0" width="225" height="119"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mNj-HD-f9W">
+                                                            <rect key="frame" x="131" y="0.0" width="259" height="119"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Los Angeles Rams at Tampa Bay Buccaneers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0xC-No-W6a">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="225" height="71"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="259" height="68"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(location)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6d1-2Q-TeR">
-                                                                    <rect key="frame" x="0.0" y="79" width="225" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="68" width="259" height="25.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(date)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbl-mr-duQ">
-                                                                    <rect key="frame" x="0.0" y="103" width="225" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="93.5" width="259" height="25.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -80,6 +79,12 @@
                                                 <constraint firstItem="QIz-LH-smp" firstAttribute="leading" secondItem="5xH-Gy-CCJ" secondAttribute="leading" constant="12" id="wHO-oz-mh1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="eventDateLabel" destination="Qbl-mr-duQ" id="IHq-kT-XnU"/>
+                                            <outlet property="eventImageView" destination="h57-0u-gwP" id="ryO-0P-0b0"/>
+                                            <outlet property="eventLocationLabel" destination="6d1-2Q-TeR" id="2C0-DA-6TV"/>
+                                            <outlet property="eventTitleLabel" destination="0xC-No-W6a" id="0Zf-Hp-REY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -96,6 +101,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q7E-FO-OZ4" secondAttribute="trailing" id="ukQ-Pq-TPH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="eventListTableView" destination="Q7E-FO-OZ4" id="PyP-IK-xma"/>
+                        <outlet property="searchBar" destination="aBn-Nb-J65" id="0nM-lR-MiY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

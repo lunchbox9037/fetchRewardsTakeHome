@@ -35,3 +35,25 @@ enum EventEndPoint {
         return components?.url
     }
 }
+
+struct EventService: NetworkServicing {
+    func fetch<T: Decodable>(_ endpoint: EventEndPoint, completion: @escaping (Result<T, NetError>) -> Void) {
+        guard let url = endpoint.url else {
+            completion(.failure(.badURL))
+            return
+        }
+        print(url.absoluteString)
+        perform(urlRequest: URLRequest(url: url)) { result in
+            switch result {
+            case .success(let data):
+                guard let decodedObjects = data.decode(type: T.self) else {
+                    completion(.failure(.couldNotUnwrap))
+                    return
+                }
+                completion(.success(decodedObjects))
+            case .failure(let error):
+                completion(.failure(.badRequest(error)))
+            }
+        }
+    }
+}
