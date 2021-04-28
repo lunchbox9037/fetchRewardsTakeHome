@@ -12,9 +12,6 @@
 		F67F8A0D263892D40007A0E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67F8A0B263892D40007A0E0 /* Main.storyboard */; };
 		F67F8A0F263892D70007A0E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F67F8A0E263892D70007A0E0 /* Assets.xcassets */; };
 		F67F8A12263892D70007A0E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67F8A10263892D70007A0E0 /* LaunchScreen.storyboard */; };
-		F67F8A25263893AE0007A0E0 /* Favorite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A23263893AE0007A0E0 /* Favorite.xcdatamodeld */; };
-		F67F8A28263893EF0007A0E0 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A27263893EF0007A0E0 /* CoreDataStack.swift */; };
-		F67F8A2B263894160007A0E0 /* Favorite+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A2A263894160007A0E0 /* Favorite+Convenience.swift */; };
 		F67F8A36263895A80007A0E0 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A35263895A80007A0E0 /* EventTableViewCell.swift */; };
 		F67F8A3B263895EF0007A0E0 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A3A263895EF0007A0E0 /* EventListViewController.swift */; };
 		F67F8A3F263896030007A0E0 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A3E263896030007A0E0 /* EventDetailViewController.swift */; };
@@ -23,6 +20,8 @@
 		F67F8A4B26389DFC0007A0E0 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A4A26389DFC0007A0E0 /* EventService.swift */; };
 		F67F8A552638A93A0007A0E0 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A542638A93A0007A0E0 /* DateFormatter.swift */; };
 		F67F8A582638AE6D0007A0E0 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A572638AE6D0007A0E0 /* ImageService.swift */; };
+		F67F8A5C2638C2700007A0E0 /* LargeTitle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A5B2638C2700007A0E0 /* LargeTitle+Extension.swift */; };
+		F67F8A5F2638C4F40007A0E0 /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A5E2638C4F40007A0E0 /* FavoriteController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +32,6 @@
 		F67F8A0E263892D70007A0E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F67F8A11263892D70007A0E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F67F8A13263892D70007A0E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F67F8A24263893AE0007A0E0 /* Favorite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorite.xcdatamodel; sourceTree = "<group>"; };
-		F67F8A27263893EF0007A0E0 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		F67F8A2A263894160007A0E0 /* Favorite+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+Convenience.swift"; sourceTree = "<group>"; };
 		F67F8A35263895A80007A0E0 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		F67F8A3A263895EF0007A0E0 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		F67F8A3E263896030007A0E0 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +40,8 @@
 		F67F8A4A26389DFC0007A0E0 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		F67F8A542638A93A0007A0E0 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		F67F8A572638AE6D0007A0E0 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		F67F8A5B2638C2700007A0E0 /* LargeTitle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LargeTitle+Extension.swift"; sourceTree = "<group>"; };
+		F67F8A5E2638C4F40007A0E0 /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +107,6 @@
 		F67F8A20263893600007A0E0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F67F8A2D263894950007A0E0 /* CoreData */,
 				F67F8A4226389A370007A0E0 /* Events.swift */,
 			);
 			path = Models;
@@ -133,16 +130,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		F67F8A2D263894950007A0E0 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				F67F8A23263893AE0007A0E0 /* Favorite.xcdatamodeld */,
-				F67F8A27263893EF0007A0E0 /* CoreDataStack.swift */,
-				F67F8A2A263894160007A0E0 /* Favorite+Convenience.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		F67F8A33263895950007A0E0 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +150,7 @@
 		F67F8A39263895D10007A0E0 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F67F8A5E2638C4F40007A0E0 /* FavoriteController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -181,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				F67F8A542638A93A0007A0E0 /* DateFormatter.swift */,
+				F67F8A5B2638C2700007A0E0 /* LargeTitle+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -257,15 +246,14 @@
 			files = (
 				F67F8A36263895A80007A0E0 /* EventTableViewCell.swift in Sources */,
 				F67F8A3B263895EF0007A0E0 /* EventListViewController.swift in Sources */,
-				F67F8A2B263894160007A0E0 /* Favorite+Convenience.swift in Sources */,
 				F67F8A552638A93A0007A0E0 /* DateFormatter.swift in Sources */,
+				F67F8A5C2638C2700007A0E0 /* LargeTitle+Extension.swift in Sources */,
 				F67F8A06263892D40007A0E0 /* AppDelegate.swift in Sources */,
-				F67F8A25263893AE0007A0E0 /* Favorite.xcdatamodeld in Sources */,
 				F67F8A08263892D40007A0E0 /* SceneDelegate.swift in Sources */,
 				F67F8A4B26389DFC0007A0E0 /* EventService.swift in Sources */,
 				F67F8A4326389A370007A0E0 /* Events.swift in Sources */,
+				F67F8A5F2638C4F40007A0E0 /* FavoriteController.swift in Sources */,
 				F67F8A3F263896030007A0E0 /* EventDetailViewController.swift in Sources */,
-				F67F8A28263893EF0007A0E0 /* CoreDataStack.swift in Sources */,
 				F67F8A4726389DDE0007A0E0 /* NetworkServicing.swift in Sources */,
 				F67F8A582638AE6D0007A0E0 /* ImageService.swift in Sources */,
 			);
@@ -469,19 +457,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F67F8A23263893AE0007A0E0 /* Favorite.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F67F8A24263893AE0007A0E0 /* Favorite.xcdatamodel */,
-			);
-			currentVersion = F67F8A24263893AE0007A0E0 /* Favorite.xcdatamodel */;
-			path = Favorite.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F67F89FA263892D40007A0E0 /* Project object */;
 }

@@ -26,11 +26,16 @@ class EventListViewController: UIViewController {
         eventListTableView.delegate = self
         eventListTableView.dataSource = self
         searchBar.delegate = self
+
         fetchEvents()
     }
     
-    // MARK: - Actions
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController!.navigationBar.largeTitleTextAttributes = [.font: UIFont.systemFont(ofSize: 34, weight: .bold)]
+
+        eventListTableView.reloadData()
+    }
 
     // MARK: - Methods
     func fetchEvents() {
@@ -48,7 +53,12 @@ class EventListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        if segue.identifier == "toEventDetailVC" {
+            guard let indexPath = eventListTableView.indexPathForSelectedRow,
+                  let destination = segue.destination as? EventDetailViewController else {return}
+            let eventToSend = dataSource[indexPath.row]
+            destination.event = eventToSend
+        }
     }
 }//end class
 
@@ -68,14 +78,23 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension EventListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        results = events.filter { (event) -> Bool in
-            return event.title.contains(searchText)
+        title = searchText
+        EventService().fetch(.search(searchText)) { [weak self] (result: Result<Events, NetError>) in
+            switch result {
+            case .success(let results):
+                DispatchQueue.main.async {
+                    self?.results = results.events
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
         eventListTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         results = events
+        title = "Today's Events"
         eventListTableView.reloadData()
         searchBar.text = nil
         searchBar.resignFirstResponder()
@@ -88,4 +107,4 @@ extension EventListViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         isSearching = false
     }
-}
+}//end extension

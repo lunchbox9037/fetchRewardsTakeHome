@@ -13,18 +13,13 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     // MARK: - Methods
     func setup(event: Event) {
         eventTitleLabel.text = event.title
         eventLocationLabel.text = event.venue.location
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-//        let formattedDate = formatter.date(from: event.date)
-//        print(event.date)
         let date = event.date.toDate()
-
-        
         eventDateLabel.text = date.dateToString(format: .full)
         eventImageView.contentMode = .scaleAspectFill
         eventImageView.clipsToBounds = true
@@ -38,6 +33,16 @@ class EventTableViewCell: UITableViewCell {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+        }
+        if let favorites = UserDefaults.standard.stringArray(forKey: FavoriteController.favoriteKey) {
+            if favorites.contains(event.title) {
+                favoriteButton.isHidden = false
+                favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            } else {
+                favoriteButton.isHidden = true
+            }
+        } else {
+            favoriteButton.isHidden = true
         }
     }
 }

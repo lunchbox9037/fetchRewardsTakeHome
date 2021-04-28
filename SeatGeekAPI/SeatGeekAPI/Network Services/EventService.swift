@@ -12,19 +12,28 @@ enum EventEndPoint {
     static let clientID = "MjE3OTk4NzR8MTYxOTU0ODM2MC44NTg3Mzk0"
 
     case events
+    case search(String)
     
     var path: String {
         switch self {
         case .events:
             return "/events"
+        case .search(_):
+            return "/events"
         }
     }
     
     var queryItems: [URLQueryItem] {
-        let items = [
+        var items = [
             URLQueryItem(name: "client_id", value: EventEndPoint.clientID)
         ]
-        return items
+        switch self {
+        case .events:
+            return items
+        case .search(let searchText):
+            items.append(URLQueryItem(name: "q", value: searchText))
+            return items
+        }
     }
     
     var url: URL? {
