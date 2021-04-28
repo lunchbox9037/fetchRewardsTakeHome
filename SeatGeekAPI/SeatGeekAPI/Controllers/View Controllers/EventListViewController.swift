@@ -26,14 +26,12 @@ class EventListViewController: UIViewController {
         eventListTableView.delegate = self
         eventListTableView.dataSource = self
         searchBar.delegate = self
-
         fetchEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController!.navigationBar.largeTitleTextAttributes = [.font: UIFont.systemFont(ofSize: 34, weight: .bold)]
-
         eventListTableView.reloadData()
     }
 
@@ -84,17 +82,17 @@ extension EventListViewController: UISearchBarDelegate {
             case .success(let results):
                 DispatchQueue.main.async {
                     self?.results = results.events
+                    self?.eventListTableView.reloadData()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        eventListTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        results = events
         title = "Today's Events"
+        isSearching = false
         eventListTableView.reloadData()
         searchBar.text = nil
         searchBar.resignFirstResponder()
@@ -102,9 +100,5 @@ extension EventListViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isSearching = true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearching = false
     }
 }//end extension
