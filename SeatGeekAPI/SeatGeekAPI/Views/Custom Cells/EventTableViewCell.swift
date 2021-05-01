@@ -17,10 +17,10 @@ class EventTableViewCell: UITableViewCell {
     
     // MARK: - Methods
     func setup(event: Event) {
+        hideOrShowFavButton(event: event)
         eventTitleLabel.text = event.title
         eventLocationLabel.text = event.venue.location
-        let date = event.date.toDate()
-        eventDateLabel.text = date.dateToString(format: .full)
+        eventDateLabel.text = event.date.toDate().dateToString(format: .full)
         eventImageView.contentMode = .scaleAspectFill
         eventImageView.clipsToBounds = true
         eventImageView.layer.cornerRadius = 10
@@ -31,16 +31,18 @@ class EventTableViewCell: UITableViewCell {
                     self?.eventImageView.image = image
                 }
             case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.eventImageView.image = UIImage(systemName: "photo")
+                }
                 print(error.localizedDescription)
             }
         }
-        if let favorites = UserDefaults.standard.stringArray(forKey: FavoriteController.favoriteKey) {
-            if favorites.contains(event.title) {
-                favoriteButton.isHidden = false
-                favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            } else {
-                favoriteButton.isHidden = true
-            }
+    }
+    
+    private func hideOrShowFavButton(event: Event) {
+        if event.isFavorite() {
+            favoriteButton.isHidden = false
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             favoriteButton.isHidden = true
         }

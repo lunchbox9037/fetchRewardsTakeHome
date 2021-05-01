@@ -32,6 +32,7 @@ class EventListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController!.navigationBar.largeTitleTextAttributes = [.font: UIFont.systemFont(ofSize: 34, weight: .bold)]
+        FavoriteController.shared.loadFromPersistentStorage()
         eventListTableView.reloadData()
     }
 
@@ -69,6 +70,7 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell
         else {return UITableViewCell()}
+
         cell.setup(event: dataSource[indexPath.row])
         return cell
     }
@@ -77,11 +79,12 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
 extension EventListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         title = searchText
+        isSearching = true
         EventService().fetch(.search(searchText)) { [weak self] (result: Result<Events, NetError>) in
             switch result {
             case .success(let results):
+                self?.results = results.events
                 DispatchQueue.main.async {
-                    self?.results = results.events
                     self?.eventListTableView.reloadData()
                 }
             case .failure(let error):
@@ -96,9 +99,5 @@ extension EventListViewController: UISearchBarDelegate {
         eventListTableView.reloadData()
         searchBar.text = nil
         searchBar.resignFirstResponder()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearching = true
     }
 }//end extension

@@ -20,8 +20,8 @@
 		F67F8A4B26389DFC0007A0E0 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A4A26389DFC0007A0E0 /* EventService.swift */; };
 		F67F8A552638A93A0007A0E0 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A542638A93A0007A0E0 /* DateFormatter.swift */; };
 		F67F8A582638AE6D0007A0E0 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A572638AE6D0007A0E0 /* ImageService.swift */; };
-		F67F8A5C2638C2700007A0E0 /* LargeTitle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A5B2638C2700007A0E0 /* LargeTitle+Extension.swift */; };
 		F67F8A5F2638C4F40007A0E0 /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A5E2638C4F40007A0E0 /* FavoriteController.swift */; };
+		F67F8A6D263CD2700007A0E0 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F8A6C263CD2700007A0E0 /* UIScrollView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +40,8 @@
 		F67F8A4A26389DFC0007A0E0 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		F67F8A542638A93A0007A0E0 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		F67F8A572638AE6D0007A0E0 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
-		F67F8A5B2638C2700007A0E0 /* LargeTitle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LargeTitle+Extension.swift"; sourceTree = "<group>"; };
 		F67F8A5E2638C4F40007A0E0 /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
+		F67F8A6C263CD2700007A0E0 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				F67F8A542638A93A0007A0E0 /* DateFormatter.swift */,
-				F67F8A5B2638C2700007A0E0 /* LargeTitle+Extension.swift */,
+				F67F8A6C263CD2700007A0E0 /* UIScrollView+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -247,11 +247,11 @@
 				F67F8A36263895A80007A0E0 /* EventTableViewCell.swift in Sources */,
 				F67F8A3B263895EF0007A0E0 /* EventListViewController.swift in Sources */,
 				F67F8A552638A93A0007A0E0 /* DateFormatter.swift in Sources */,
-				F67F8A5C2638C2700007A0E0 /* LargeTitle+Extension.swift in Sources */,
 				F67F8A06263892D40007A0E0 /* AppDelegate.swift in Sources */,
 				F67F8A08263892D40007A0E0 /* SceneDelegate.swift in Sources */,
 				F67F8A4B26389DFC0007A0E0 /* EventService.swift in Sources */,
 				F67F8A4326389A370007A0E0 /* Events.swift in Sources */,
+				F67F8A6D263CD2700007A0E0 /* UIScrollView+Extension.swift in Sources */,
 				F67F8A5F2638C4F40007A0E0 /* FavoriteController.swift in Sources */,
 				F67F8A3F263896030007A0E0 /* EventDetailViewController.swift in Sources */,
 				F67F8A4726389DDE0007A0E0 /* NetworkServicing.swift in Sources */,

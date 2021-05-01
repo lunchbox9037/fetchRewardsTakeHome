@@ -14,7 +14,6 @@ class ImageCache {
 struct ImageService: NetworkServicing {
     func fetchImage(_ endpoint: URL, completion: @escaping (Result<UIImage, NetError>) -> Void) {
         
-        
         if let poster = ImageCache.shared.object(forKey: NSURL(string: endpoint.absoluteString) ?? NSURL()) {
             completion(.success(poster))
         } else {
