@@ -9,12 +9,11 @@ import CoreData
 
 class FavoriteController {
     static let shared = FavoriteController()
-    static let favoriteKey = "favorites"
-    var favs: [Event] = []
+    var favs: Set<Event> = []
     
     // MARK: - CRUD
     func addToFavorites(event: Event) {
-        favs.append(event)
+        favs.insert(event)
         saveToPersistentStorage()
     }
     
@@ -24,7 +23,7 @@ class FavoriteController {
         saveToPersistentStorage()
     }
     
-    // MARK: - Persistence
+    // MARK: - JSON Persistence
     private func fileURL() -> URL {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectoryURL = urls[0].appendingPathComponent("SeatGeekAPI")
@@ -43,7 +42,7 @@ class FavoriteController {
     func loadFromPersistentStorage() {
         do {
             let data = try Data(contentsOf: fileURL())
-            favs = try JSONDecoder().decode([Event].self, from: data)
+            favs = try JSONDecoder().decode(Set<Event>.self, from: data)
         } catch {
             print(error.localizedDescription)
         }

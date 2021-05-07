@@ -25,7 +25,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-FO-OZ4">
                                 <rect key="frame" x="0.0" y="196" width="414" height="666"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="143" id="7M0-Fy-WYz" customClass="EventTableViewCell" customModule="SeatGeekAPI" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="143" id="7M0-Fy-WYz" customClass="EventListTableViewCell" customModule="SeatGeekAPI" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7M0-Fy-WYz" id="5xH-Gy-CCJ">
@@ -38,7 +38,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWa-IS-Qh8">
                                                             <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h57-0u-gwP">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h57-0u-gwP" customClass="RequestingImageView" customModule="SeatGeekAPI" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
                                                                 </imageView>
                                                             </subviews>
@@ -155,7 +155,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-x0-uxN">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-x0-uxN" customClass="RequestingImageView" customModule="SeatGeekAPI" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49" width="390" height="256"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="256" id="0Y7-iu-O6c"/>

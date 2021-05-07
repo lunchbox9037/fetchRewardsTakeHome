@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class EventListViewController: UIViewController {
     // MARK: - Outlets
@@ -13,20 +14,21 @@ class EventListViewController: UIViewController {
     @IBOutlet weak var eventListTableView: UITableView!
     
     // MARK: - Properties
-    var events: [Event] = []
-    var results: [Event] = []
-    var isSearching: Bool  = false
-    var dataSource: [Event] {
-        return isSearching ? results : events
-    }
+    private var viewModel = EventListViewModel()
+    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         eventListTableView.delegate = self
         eventListTableView.dataSource = self
-        searchBar.delegate = self
-        fetchEvents()
+        viewModel.fetchEvents()
+        viewModel.$events
+            .receive(on: RunLoop.main)
+            .sink { (_) in
+                self.eventListTableView.reloadData()
+            }.store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,26 +39,12 @@ class EventListViewController: UIViewController {
     }
 
     // MARK: - Methods
-    func fetchEvents() {
-        EventService().fetch(.events) { [weak self] (result: Result<Events, NetError>) in
-            switch result {
-            case .success(let results):
-                self?.events = results.events
-                DispatchQueue.main.async {
-                    self?.eventListTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEventDetailVC" {
             guard let indexPath = eventListTableView.indexPathForSelectedRow,
                   let destination = segue.destination as? EventDetailViewController else {return}
-            let eventToSend = dataSource[indexPath.row]
-            destination.event = eventToSend
+            let eventToSend = viewModel.events[indexPath.row]
+            destination.viewModel = eventToSend
         }
     }
 }//end class
@@ -64,14 +52,14 @@ class EventListViewController: UIViewController {
 // MARK: - Extensions
 extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return viewModel.events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EventListTableViewCell.identifier, for: indexPath) as? EventListTableViewCell
         else {return UITableViewCell()}
-
-        cell.setup(event: dataSource[indexPath.row])
+        
+        cell.setupCell(with: viewModel.events[indexPath.row])
         return cell
     }
 }
@@ -79,25 +67,13 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
 extension EventListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         title = searchText
-        isSearching = true
-        EventService().fetch(.search(searchText)) { [weak self] (result: Result<Events, NetError>) in
-            switch result {
-            case .success(let results):
-                self?.results = results.events
-                DispatchQueue.main.async {
-                    self?.eventListTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        viewModel.searchEvents(searchText: searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         title = "Today's Events"
-        isSearching = false
-        eventListTableView.reloadData()
+        viewModel.fetchEvents()
         searchBar.text = nil
         searchBar.resignFirstResponder()
     }
-}//end extension
+}//end extensions

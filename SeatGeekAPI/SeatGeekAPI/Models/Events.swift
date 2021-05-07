@@ -11,7 +11,7 @@ struct Events: Codable {
     let events: [Event]
 }
 
-struct Event: Codable {
+struct Event: Codable, Hashable {
     let title: String
     let date: String
     let url: URL?
@@ -24,11 +24,11 @@ struct Event: Codable {
     }
 }
 
-struct Performer: Codable {
+struct Performer: Codable, Hashable {
     let image: URL
 }
 
-struct Venue: Codable {
+struct Venue: Codable, Hashable {
     let location: String
     
     enum CodingKeys: String, CodingKey {
