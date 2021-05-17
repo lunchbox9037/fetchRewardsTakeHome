@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ToggleFavoriteDelegate: AnyObject {
+    func toggle(_ sender: EventTableViewCell)
+}
+
 class EventTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var eventImageView: UIImageView!
@@ -14,6 +18,19 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
+    
+    weak var delegate: ToggleFavoriteDelegate?
+    var event: Event? {
+        didSet {
+            guard let event = event else {return}
+            setup(event: event)
+        }
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        delegate?.toggle(self)
+    }
+    
     
     // MARK: - Methods
     func setup(event: Event) {

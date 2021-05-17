@@ -8,9 +8,12 @@
 import UIKit
 
 class EventListViewController: UIViewController {
+    
+    
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var eventListTableView: UITableView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     
     // MARK: - Properties
     var events: [Event] = []
@@ -33,8 +36,22 @@ class EventListViewController: UIViewController {
         super.viewWillAppear(true)
         self.navigationController!.navigationBar.largeTitleTextAttributes = [.font: UIFont.systemFont(ofSize: 34, weight: .bold)]
         FavoriteController.shared.loadFromPersistentStorage()
+        segmentControlChanged(segmentControl)
         eventListTableView.reloadData()
     }
+    
+    @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            fetchEvents()
+        case 1:
+            self.events = FavoriteController.shared.favs
+            eventListTableView.reloadData()
+        default:
+            break
+        }
+    }
+    
 
     // MARK: - Methods
     func fetchEvents() {
@@ -70,8 +87,8 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell
         else {return UITableViewCell()}
-
-        cell.setup(event: dataSource[indexPath.row])
+        cell.delegate = self
+        cell.event = dataSource[indexPath.row]
         return cell
     }
 }
@@ -101,3 +118,13 @@ extension EventListViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
 }//end extension
+
+extension EventListViewController: ToggleFavoriteDelegate {
+    func toggle(_ sender: EventTableViewCell) {
+        sender.favoriteButton.isHidden = true
+        FavoriteController.shared.removeFavorite(event: sender.event!)
+//        events = FavoriteController.shared.favs
+//        eventListTableView.reloadData()
+        segmentControlChanged(segmentControl)
+    }
+}
