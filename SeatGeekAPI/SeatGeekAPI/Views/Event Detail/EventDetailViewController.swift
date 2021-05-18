@@ -40,7 +40,7 @@ class EventDetailViewController: UIViewController, SFSafariViewControllerDelegat
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
         guard let event = viewModel else {return}
-        if event.isFavoriteEvent {
+        if event.event.isFavorite() {
             event.unfavorite()
             favoriteButton.image = UIImage(systemName: "heart")
         } else {
@@ -52,7 +52,7 @@ class EventDetailViewController: UIViewController, SFSafariViewControllerDelegat
     // MARK: - Methods
     func updateViews() {
         guard let event = viewModel else {return}
-        if event.isFavoriteEvent {
+        if event.event.isFavorite() {
             favoriteButton.image = UIImage(systemName: "heart.fill")
         }
         eventTitleLabel.text = event.title

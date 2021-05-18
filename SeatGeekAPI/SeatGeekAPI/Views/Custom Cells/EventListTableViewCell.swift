@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FavoriteButtonDelegate: AnyObject {
+    func toggleFavorite(_ sender: EventListTableViewCell)
+}
+
 class EventListTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var eventImageView: RequestingImageView!
@@ -17,6 +21,19 @@ class EventListTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let identifier = "eventCell"
+    weak var delegate: FavoriteButtonDelegate?
+    
+    var event: Event? {
+        didSet {
+            guard let event = event else {return}
+            setupCell(with: EventViewModel(event: event))
+        }
+    }
+    
+    // MARK: - Actions
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        delegate?.toggleFavorite(self)
+    }
     
     // MARK: - Methods
     func setupCell(with event: EventViewModel) {
@@ -24,8 +41,9 @@ class EventListTableViewCell: UITableViewCell {
         eventLocationLabel.text  = event.location
         eventDateLabel.text = event.date
         if !event.isFavoriteEvent {
-            favoriteButton.isHidden = true
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             favoriteButton.isHidden = false
         }
         

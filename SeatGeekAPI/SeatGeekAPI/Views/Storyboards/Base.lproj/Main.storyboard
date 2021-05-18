@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hPF-2t-O1Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hPF-2t-O1Z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBn-Nb-J65">
-                                <rect key="frame" x="0.0" y="140" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-FO-OZ4">
-                                <rect key="frame" x="0.0" y="196" width="414" height="666"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-FO-OZ4">
+                                <rect key="frame" x="0.0" y="222" width="414" height="640"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="143" id="7M0-Fy-WYz" customClass="EventListTableViewCell" customModule="SeatGeekAPI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="143"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7M0-Fy-WYz" id="5xH-Gy-CCJ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="143"/>
@@ -90,6 +90,9 @@
                                                     <state key="normal" image="heart.fill" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="favoriteButtonTapped:" destination="7M0-Fy-WYz" eventType="touchUpInside" id="zTM-39-a8o"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -112,16 +115,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bot-hn-fRA">
+                                <rect key="frame" x="0.0" y="191" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Today's Events"/>
+                                    <segment title="Favorite Events"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="stE-su-Hbg"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Q7E-FO-OZ4" secondAttribute="bottom" id="GT6-cn-6Ot"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bot-hn-fRA" secondAttribute="trailing" id="XfB-Tf-cpm"/>
                             <constraint firstItem="Q7E-FO-OZ4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b4f-Gh-7R0"/>
                             <constraint firstItem="aBn-Nb-J65" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f4j-BJ-lHm"/>
+                            <constraint firstItem="bot-hn-fRA" firstAttribute="top" secondItem="aBn-Nb-J65" secondAttribute="bottom" id="giL-WZ-xyj"/>
+                            <constraint firstItem="Q7E-FO-OZ4" firstAttribute="top" secondItem="bot-hn-fRA" secondAttribute="bottom" id="i55-BB-FFt"/>
                             <constraint firstItem="aBn-Nb-J65" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kxi-mP-Uh9"/>
+                            <constraint firstItem="bot-hn-fRA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pms-DK-DsO"/>
                             <constraint firstItem="aBn-Nb-J65" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qeK-Lz-DcP"/>
-                            <constraint firstItem="Q7E-FO-OZ4" firstAttribute="top" secondItem="aBn-Nb-J65" secondAttribute="bottom" id="s0k-2K-hkI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q7E-FO-OZ4" secondAttribute="trailing" id="ukQ-Pq-TPH"/>
                         </constraints>
                     </view>
@@ -129,6 +145,7 @@
                     <connections>
                         <outlet property="eventListTableView" destination="Q7E-FO-OZ4" id="PyP-IK-xma"/>
                         <outlet property="searchBar" destination="aBn-Nb-J65" id="0nM-lR-MiY"/>
+                        <outlet property="segmentControl" destination="bot-hn-fRA" id="INh-3N-CzY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

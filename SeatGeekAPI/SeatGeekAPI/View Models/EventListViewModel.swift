@@ -12,12 +12,16 @@ class EventListViewModel: ObservableObject {
     private let eventService = EventService()
     @Published var events = [EventViewModel]()
     
+    func fetchFavorites() {
+        events = FavoriteController.shared.favs.compactMap({EventViewModel(event: $0)})
+    }
+    
     func fetchEvents() {
         eventService.fetch(.events) { [weak self] (result: Result<Events, NetError>) in
             switch result {
             case .success(let results):
                 DispatchQueue.main.async {
-                    self?.events = results.events.map({EventViewModel(event: $0)})
+                    self?.events = results.events.compactMap({EventViewModel(event: $0)})
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -26,7 +30,7 @@ class EventListViewModel: ObservableObject {
     }
     
     func searchEvents(searchText: String) {
-        EventService().fetch(.search(searchText)) { [weak self] (result: Result<Events, NetError>) in
+        eventService.fetch(.search(searchText)) { [weak self] (result: Result<Events, NetError>) in
             switch result {
             case .success(let results):
                 DispatchQueue.main.async {
